@@ -18,8 +18,10 @@ jobs:
         with:
           ndk-version: r26b
           link-to-sdk: true
-      - name: Build arm64 Debug APK
-        run: ./gradlew assembleDebug -Pevvdroid.abis=arm64-v8a
+      - name: Make gradlew executable and build APK
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug -Pevvdroid.abis=arm64-v8a
       - uses: actions/upload-artifact@v4
         with:
           name: evvdroid-latest
